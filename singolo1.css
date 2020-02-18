@@ -132,3 +132,101 @@ ul {
   color: #f06c64;
 }
 
+/* SLIDER */
+
+.slider::before,
+.slider::after {
+  content: "";
+  background-repeat: no-repeat;
+
+  width: 71px;
+  align-self: stretch;
+}
+.slider::before {
+  background-image: url("./assets/images/slider-left-arrow.svg");
+  background-position: 2px center;
+}
+.slider::after {
+  background-image: url("./assets/images/slider-right-arrow.svg");
+  background-position: right center;
+}
+
+.slider {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.slider {
+  padding-top: 2px;
+  padding-bottom: 8px;
+  height: 600px;
+  background-color: #f06c64;
+  border-bottom: 5px solid #ea676b;
+}
+
+.phones {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 70px;
+}
+
+.phone-v,
+.phone-h {
+  display: flex;
+  position: relative;
+}
+
+.phone-base {
+  background-image: url("./assets/images/iPhone.png");
+  width: 216px;
+  height: 458px;
+  position: absolute;
+}
+
+.shadow-v {
+  background-image: url("./assets/images/shadow-v.png");
+  width: 240px;
+  left: 1px;
+  height: 483px;
+  position: relative;
+}
+.shadow-h {
+  background-image: url("./assets/images/shadow-h.png");
+  width: 483px;
+  left: 3px;
+  top: -1px;
+  height: 240px;
+  position: relative;
+}
+
+.phone-v-screen {
+  background-image: url("./assets/images/phonescreen-v.jpeg");
+  width: 194px;
+  height: 339px;
+  position: absolute;
+  top: 62px;
+  left: 12px;
+  border: 3px solid #c5c5c5;
+  border-radius: 4px;
+}
+
+.phone-h-screen {
+  background-image: url("./assets/images/phonescreen-h.jpeg");
+  width: 339px;
+  height: 194px;
+  position: absolute;
+  top: 10px;
+  left: 59px;
+  border: 3px solid #c7c7c7;
+  border-radius: 4px;
+}
+
+.phone-h {
+  align-self: center;
+  /* justify-self: right; */
+}
+.phone-h .phone-base {
+  transform: rotate(90deg);
+  transform-origin: 231px;
+}
