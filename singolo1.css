@@ -1,0 +1,134 @@
+/* lato-300 - latin */
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 300;
+  src: local("Lato Light"), local("Lato-Light"),
+    url("./assets/fonts/lato-v16-latin-300.woff2") format("woff2"),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+      url("./assets/fonts/lato-v16-latin-300.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* lato-regular - latin */
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Lato Regular"), local("Lato-Regular"),
+    url("./assets/fonts/lato-v16-latin-regular.woff2") format("woff2"),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+      url("./assets/fonts/lato-v16-latin-regular.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* lato-700 - latin */
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Lato Bold"), local("Lato-Bold"),
+    url("./assets/fonts/lato-v16-latin-700.woff2") format("woff2"),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+      url("./assets/fonts/lato-v16-latin-700.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* lato-900 - latin */
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 900;
+  src: local("Lato Black"), local("Lato-Black"),
+    url("./assets/fonts/lato-v16-latin-900.woff2") format("woff2"),
+    /* Chrome 26+, Opera 23+, Firefox 39+ */
+      url("./assets/fonts/lato-v16-latin-900.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Lato", sans-serif;
+}
+
+body,
+h1,
+ul {
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  font-size: inherit;
+  display: inline;
+}
+ul {
+  list-style-type: none;
+}
+
+.wrapper {
+  max-width: 1020px;
+  margin: 0 auto;
+}
+
+.header,
+.slider,
+.services {
+  padding: 0 40px;
+}
+
+/* HEADER */
+
+.header {
+  background-color: #2d303a;
+  border-bottom: 5px solid #323746;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  height: 92px;
+}
+
+.logo {
+  text-transform: uppercase;
+  font-size: 25.7px;
+  font-weight: 700;
+  line-height: 3.25;
+  letter-spacing: -0.9px;
+}
+
+.logo a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.logo .star {
+  color: #f06c64;
+}
+
+.header-navigation .navigation {
+  display: flex;
+}
+
+.navigation li {
+  margin-left: 30.7px;
+}
+
+.navigation li a {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.3px;
+  text-decoration: none;
+  color: #ffffff;
+  position: relative;
+}
+
+.navigation li:not(:first-child) a::after {
+  content: ".";
+  position: absolute;
+  color: #494e62;
+  top: -3px;
+  left: -17px;
+}
+
+.navigation li a.active {
+  color: #f06c64;
+}
+
