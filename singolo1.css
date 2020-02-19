@@ -47,6 +47,9 @@ html {
 
 body,
 h1,
+h2,
+h3,
+p,
 ul {
   margin: 0;
   padding: 0;
@@ -235,4 +238,125 @@ ul {
 .phone-h .phone-base {
   transform: rotate(90deg);
   transform-origin: 231px;
+}
+
+/* SERVICES */
+
+.services {
+  color: #666d89;
+  background-color: #f2f2f2;
+  border-bottom: 5px solid #ffffff;
+  padding-top: 34px;
+  padding-bottom: 60px;
+}
+
+.services h2 {
+  font-family: "Lato";
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -0.1px;
+  margin-top: 25px;
+  margin-bottom: 19px;
+}
+
+.services .services-description {
+  color: #767e9e;
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 30px;
+  letter-spacing: 0.42px;
+  text-align: justify;
+  margin-bottom: 20px;
+}
+
+.services-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+  column-gap: 18px;
+  row-gap: 5.5px;
+}
+
+.services-list .item {
+  padding-left: 80px;
+  position: relative;
+}
+
+.services-list .item:nth-child(3n) {
+  padding-left: 82px;
+}
+
+.services-list .item:nth-child(3n)::before {
+  left: 2px;
+}
+
+.services-list .item::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 1px;
+  top: 26px;
+  border-radius: 50%;
+  width: 59px;
+  height: 59px;
+  border: 2px solid #666d89;
+}
+
+.item.service-design::before {
+  background-image: url("./assets/images/pen.svg");
+  background-repeat: no-repeat;
+  background-position: 11px 11px;
+}
+
+.item.service-ideas::before {
+  background-image: url("./assets/images/bulb.svg");
+  background-repeat: no-repeat;
+  background-position: 15px 10px;
+}
+
+.item.service-love::before {
+  background-image: url("./assets/images/heart.svg");
+  background-repeat: no-repeat;
+  background-position: 10px 12px;
+}
+
+.item.service-responsive::before {
+  background-image: url("./assets/images/phone.svg");
+  background-repeat: no-repeat;
+  background-position: 15px 10px;
+}
+
+.item.service-support::before {
+  background-image: url("./assets/images/bubble.svg");
+  background-repeat: no-repeat;
+  background-position: 11px 13px;
+}
+
+.item.service-star::before {
+  background-image: url("./assets/images/star.svg");
+  background-repeat: no-repeat;
+  background-position: 10px 11px;
+}
+
+.services-list h3 {
+  font-size: 19px;
+  font-weight: 900;
+  padding: 0;
+  margin: 0;
+  line-height: 30px;
+  letter-spacing: -0.6px;
+  margin-top: 18px;
+  margin-bottom: 0;
+}
+
+.services-list p {
+  font-family: "Lato";
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 22.2px;
+  letter-spacing: 0.3px;
+  margin-top: 3px;
+  word-spacing: -1.9px;
+  text-align: justify;
 }
