@@ -171,6 +171,11 @@ ul {
   grid-gap: 70px;
 }
 
+/* mover for perfect pixel */
+.phones {
+  margin-left: -2px;
+}
+
 .phone-v,
 .phone-h {
   display: flex;
