@@ -282,14 +282,6 @@ ul {
   position: relative;
 }
 
-.services-list .item:nth-child(3n) {
-  padding-left: 82px;
-}
-
-.services-list .item:nth-child(3n)::before {
-  left: 2px;
-}
-
 .services-list .item::before {
   content: "";
   display: block;
