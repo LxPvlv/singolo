@@ -90,6 +90,9 @@ ul {
   color: #ffffff;
   text-decoration: none;
 }
+.header a:hover {
+  color: #f06c64;
+}
 
 .logo .star {
   color: #f06c64;
@@ -127,6 +130,7 @@ ul {
   color: #494e62;
   top: -3px;
   left: -17px;
+  width: 17px;
 }
 
 .navigation li a.active {
@@ -147,20 +151,53 @@ ul {
   border-bottom: 6px solid #ea676b;
 }
 
-.slider::before,
-.slider::after {
+button.prev,
+button.next {
   content: "";
   background-repeat: no-repeat;
   flex-grow: 1;
   align-self: stretch;
+  border: 0;
+  padding: 0;
+  background-color: #f06c64;
 }
 
-.slider::before {
+button.prev:hover,
+button.next:hover {
+  cursor: pointer;
+}
+
+button.prev:hover {
+  animation: animate-prev 1s linear infinite;
+}
+
+button.next:hover {
+  animation: animate-next 1s linear infinite;
+}
+@keyframes animate-next {
+  from {
+    background-position-x: 50%;
+  }
+  to {
+    background-position-x: 100%;
+  }
+}
+
+@keyframes animate-prev {
+  from {
+    background-position-x: 50%;
+  }
+  to {
+    background-position-x: 0%;
+  }
+}
+
+button.prev {
   background-image: url("./assets/images/slider-left-arrow.svg");
-  background-position: 2px center;
+  background-position: left center;
 }
 
-.slider::after {
+button.next {
   background-image: url("./assets/images/slider-right-arrow.svg");
   background-position: right center;
 }
