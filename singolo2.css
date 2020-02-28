@@ -121,6 +121,12 @@ ul {
   letter-spacing: 0.3px;
 }
 
+.portfolio-filter button:hover {
+  cursor: pointer;
+  border-color: #c5c5c5;
+  color: #c5c5c5;
+}
+
 .portfolio-filter button.active {
   border: 1px solid #c5c5c5;
   color: #c5c5c5;
@@ -208,10 +214,15 @@ ul {
   margin-top: 24px;
 }
 
-.social-buttons img {
+.social-buttons a {
+  margin-right: 8px;
   width: 32px;
   height: 32px;
-  margin-right: 8px;
+}
+
+.social-buttons a:hover {
+  border-radius: 50%;
+  box-shadow: inset 0 0 2px 1px #9a9fb0, 0 0 3px 1px #9a9fb0;
 }
 
 /* KLUGE */
