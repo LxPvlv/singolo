@@ -145,6 +145,11 @@ ul {
   font-family: "Lato";
 }
 
+.quote-from input:focus,
+.quote-from textarea:focus {
+  background-color: #f0d8d9;
+}
+
 .quote-info {
   flex: 1 32%;
 }
