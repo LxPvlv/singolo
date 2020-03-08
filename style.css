@@ -79,6 +79,13 @@ ul {
   padding: 0 40px;
 }
 
+.section-header {
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 23px;
+  letter-spacing: -0.1px;
+}
+
 /* HEADER */
 
 .header {
@@ -90,11 +97,11 @@ ul {
   height: 95px;
 }
 
-.logo a {
+.logo .logo-link {
   color: #ffffff;
   text-decoration: none;
 }
-.header a:hover {
+.header .logo-link:hover {
   color: #f06c64;
 }
 
@@ -102,7 +109,7 @@ ul {
   color: #f06c64;
 }
 
-.logo h1 {
+.logo .logo-title {
   text-transform: uppercase;
   font-size: 25px;
   font-weight: 700;
@@ -114,11 +121,11 @@ ul {
   display: flex;
 }
 
-.navigation li {
+.navigation .navigation-item {
   margin-left: 30.7px;
 }
 
-.navigation li a {
+.navigation .navigation-item .navigation-link {
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
@@ -128,7 +135,7 @@ ul {
   position: relative;
 }
 
-.navigation li:not(:first-child) a::after {
+.navigation .navigation-item:not(:first-child) .navigation-link::after {
   content: ".";
   position: absolute;
   color: #494e62;
@@ -137,7 +144,7 @@ ul {
   width: 17px;
 }
 
-.navigation li a.active {
+.navigation .navigation-item .navigation-link.active {
   color: #f06c64;
 }
 
@@ -155,7 +162,7 @@ ul {
   border-bottom: 6px solid #ea676b;
 }
 
-.slider h2 {
+.slider .slider-header {
   position: absolute;
   left: -200%;
 }
@@ -286,13 +293,6 @@ button.next {
   padding-bottom: 62px;
 }
 
-.services h2 {
-  font-size: 30px;
-  font-weight: 900;
-  line-height: 23px;
-  letter-spacing: -0.1px;
-}
-
 .services .services-description {
   color: #767e9e;
   font-size: 18px;
@@ -361,14 +361,14 @@ button.next {
   background-position: 10px 11px;
 }
 
-.services-list h3 {
+.services-list .service-list-header {
   font-size: 18px;
   font-weight: 700;
   line-height: 32px;
   margin-top: 18px;
 }
 
-.services-list p {
+.services-list .service-list-description {
   font-size: 12px;
   font-weight: 400;
   line-height: 21px;
@@ -387,11 +387,11 @@ button.next {
   padding-bottom: 47px;
 }
 
-.portfolio h2 {
-  font-size: 30px;
+.portfolio .section-header {
+  /* font-size: 30px;
   font-weight: 900;
   line-height: 23px;
-  letter-spacing: -0.1px;
+  letter-spacing: -0.1px; */
   color: #666d89;
 }
 
@@ -464,16 +464,16 @@ button.next {
   padding-bottom: 67px;
 }
 
-.about h2 {
-  font-size: 30px;
-  line-height: 20px;
+.about .section-header {
+  /* font-size: 30px;
+  line-height: 20px; */
   color: #666d89;
-  font-weight: 900;
-  letter-spacing: -0.1px;
+  /* font-weight: 900;
+  letter-spacing: -0.1px; */
 }
 
 .about-description {
-  margin-top: 26px;
+  margin-top: 23px;
   font-size: 18px;
   line-height: 30px;
   color: #767e9e;
@@ -521,13 +521,13 @@ button.next {
   margin-top: 24px;
 }
 
-.social-buttons a {
+.social-buttons .social-buttons-link {
   margin-right: 8px;
   width: 32px;
   height: 32px;
 }
 
-.social-buttons a:hover {
+.social-buttons .social-buttons-link:hover {
   border-radius: 50%;
   box-shadow: inset 0 0 2px 1px #9a9fb0, 0 0 3px 1px #9a9fb0;
 }
@@ -536,22 +536,17 @@ button.next {
 
 .quote {
   background-color: #ef6b63;
-  padding-top: 59px;
+  padding-top: 66px;
   border-bottom: 6px solid #e9676b;
   padding-bottom: 0px;
 }
 
-.quote h2 {
-  font-size: 30px;
-  line-height: 36px;
-
+.quote .section-header {
   color: #f0d8d9;
-  font-weight: 900;
-  letter-spacing: -0.2px;
 }
 
 .quote-description {
-  margin-top: 18px;
+  margin-top: 24px;
   font-size: 18px;
   color: #f0d8d9;
   font-weight: 300;
@@ -637,7 +632,7 @@ button.next {
 }
 
 .quote-info .quoteinfo-description,
-.props .prop-item a {
+.props .prop-item .props-item-link {
   font-size: 12px;
   line-height: 22px;
   color: #f0d8d9;
@@ -656,7 +651,7 @@ button.next {
   position: relative;
 }
 
-.props .prop-item a {
+.props .prop-item .props-item-link {
   line-height: 20px;
   word-spacing: -1px;
   text-decoration: none;
@@ -717,11 +712,11 @@ button.next {
   margin-top: 0;
 }
 
-.footer .social-buttons a:last-child {
+.footer .social-buttons .social-buttons-link:last-child {
   margin-right: 0;
 }
 
-.social-buttons a:hover {
+.social-buttons .social-buttons-link:hover {
   border-radius: 50%;
   box-shadow: inset 0 0 2px 1px #9a9fb0, 0 0 3px 1px #9a9fb0;
 }
