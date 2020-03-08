@@ -443,6 +443,12 @@ button.next {
 .portfolio-item {
   flex-basis: 220px;
   margin-bottom: 20px;
+  transition: transform 300ms;
+}
+
+.portfolio-item:hover {
+  cursor: pointer;
+  transform: scale(1.04);
 }
 
 .portfolio-item:nth-child(n + 13) {
