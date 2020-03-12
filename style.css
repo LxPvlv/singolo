@@ -43,6 +43,7 @@
 
 html {
   font-family: "Lato", sans-serif;
+  scroll-padding-top: 95px;
 }
 
 body,
@@ -95,6 +96,9 @@ ul {
   justify-content: space-between;
   align-items: baseline;
   height: 95px;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
 }
 
 .logo .logo-link {
@@ -144,7 +148,16 @@ ul {
   width: 17px;
 }
 
-.navigation .navigation-item .navigation-link.active {
+.navigation .navigation-item .navigation-link {
+  outline: none;
+  transition: color 0.3s;
+}
+
+.navigation .navigation-item .navigation-link:focus {
+  text-decoration: underline;
+}
+
+.navigation .navigation-item.active .navigation-link {
   color: #f06c64;
 }
 
