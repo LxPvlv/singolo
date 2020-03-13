@@ -168,13 +168,12 @@ ul {
 .slider {
   display: flex;
   align-items: center;
-}
-
-.slider {
   padding-bottom: 6px;
   height: 600px;
   background-color: #f06c64;
   border-bottom: 6px solid #ea676b;
+  justify-content: space-between;
+  transition: all 0.4s;
 }
 
 .slider .slider-header {
@@ -185,11 +184,12 @@ ul {
 button.prev,
 button.next {
   background-repeat: no-repeat;
-  flex-grow: 1;
   align-self: stretch;
   border: 0;
   padding: 0;
-  background-color: #f06c64;
+  background-color: transparent;
+  outline: none;
+  flex-basis: 71px;
 }
 
 button.prev:hover,
@@ -232,10 +232,29 @@ button.next {
   background-position: right center;
 }
 
-.phones {
+.slides-viewport {
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.slides-container {
+  display: flex;
+  position: relative;
+}
+
+.phones-slide1,
+.phones-slide2 {
+  flex: 0 0 100%;
+}
+
+.phones-slide1 {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  flex-basis: 798px;
+}
+
+.phones-slide2 {
+  background-image: url("./assets/images/slide-2.png");
+  background-size: cover;
 }
 
 .phone-v,

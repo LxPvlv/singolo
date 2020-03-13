@@ -15,6 +15,58 @@ headerNavigation.addEventListener("click", evt => {
   const destination = document.querySelector(target.getAttribute("href"));
   destination &&
     destination.scrollIntoView({
-    behavior: "smooth"
-  });
+      behavior: "smooth"
+    });
+});
+
+// Slider
+const slider = document.querySelector("#slider");
+const duration = getComputedStyle(slider).transitionDuration;
+const slidesContainer = slider.querySelector(".slides-container");
+let elementSource = slidesContainer.firstElementChild;
+let elementDestination = slidesContainer.lastElementChild;
+let isAnimated = false;
+
+slider.addEventListener("click", evt => {
+  const target = evt.target;
+  if (target.tagName !== "BUTTON") return;
+
+  if (isAnimated) return;
+
+  const { direction } = target.dataset;
+
+  switch (direction) {
+    case "next":
+      slidesContainer.append(elementDestination);
+      slidesContainer.style.transition = `transform ${duration}`;
+      slidesContainer.style.transform = "translateX(-100%)";
+      break;
+    case "prev":
+      requestAnimationFrame(() => {
+        slidesContainer.prepend(elementDestination);
+        slidesContainer.style.transform = "translateX(-100%)";
+        requestAnimationFrame(() => {
+          slidesContainer.style.transition = `transform ${duration}`;
+          slidesContainer.style.transform = "translateX(0%)";
+        });
+      });
+      break;
+  }
+
+  const { bgcolor, bbcolor } = elementDestination.dataset;
+  slider.style.backgroundColor = bgcolor;
+  slider.style.borderBottomColor = bbcolor;
+
+  isAnimated = true;
+  slidesContainer.addEventListener(
+    "transitionend",
+    evt => {
+      isAnimated = false;
+      slidesContainer.style.transition = "unset";
+      slidesContainer.style.transform = "translateX(0%)";
+      slidesContainer.prepend(elementDestination);
+      [elementSource, elementDestination] = [elementDestination, elementSource];
+    },
+    { once: true }
+  );
 });
