@@ -2,7 +2,7 @@ const headerNavigation = document.querySelector("#header-navigation");
 
 headerNavigation.addEventListener("click", evt => {
   const target = evt.target;
-  if(target.tagName !== 'A') return
+  if (target.tagName !== "A") return;
 
   evt.preventDefault();
 
@@ -12,8 +12,9 @@ headerNavigation.addEventListener("click", evt => {
 
   target.parentElement.classList.add("active");
 
-  const destination = document.querySelector(target.getAttribute("href"))
-  destination && destination.scrollIntoView({
+  const destination = document.querySelector(target.getAttribute("href"));
+  destination &&
+    destination.scrollIntoView({
     behavior: "smooth"
   });
 });
