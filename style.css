@@ -449,10 +449,6 @@ button.next {
 }
 
 .portfolio .section-header {
-  /* font-size: 30px;
-  font-weight: 900;
-  line-height: 23px;
-  letter-spacing: -0.1px; */
   color: #666d89;
 }
 
@@ -481,6 +477,7 @@ button.next {
   line-height: 18px;
   font-weight: 400;
   letter-spacing: 0.3px;
+  outline: none;
 }
 
 .portfolio-filter button:hover {
@@ -505,6 +502,10 @@ button.next {
   flex-basis: 220px;
   margin-bottom: 20px;
   transition: transform 300ms;
+}
+
+.portfolio-active-item {
+  outline: 5px solid #f06c64;
 }
 
 .portfolio-item:hover {

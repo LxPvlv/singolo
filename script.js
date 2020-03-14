@@ -77,3 +77,28 @@ phones.forEach(phone => {
     screen.classList.toggle("screen-opacity");
   });
 });
+
+//portfolio
+const portfolio = document.querySelector("#portfolio");
+const filterBtns = portfolio.querySelector(".portfolio-filter");
+const portfolioList = portfolio.querySelector(".portfolio-list");
+
+filterBtns.addEventListener("click", evt => {
+  const target = evt.target;
+  if (target.tagName !== "BUTTON") return;
+
+  [...filterBtns.children].forEach(btn => btn.classList.remove("active"));
+  target.classList.add("active");
+
+  portfolioList.prepend(portfolioList.lastElementChild);
+});
+
+portfolioList.addEventListener("click", evt => {
+  const target = evt.target;
+  if (target.tagName !== "IMG") return;
+
+  [...portfolioList.children].forEach(img =>
+    img.classList.remove("portfolio-active-item")
+  );
+  target.classList.add("portfolio-active-item");
+});
