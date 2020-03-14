@@ -78,7 +78,8 @@ ul {
 .portfolio,
 .about,
 .quote,
-.footer {
+.footer,
+.modal-container {
   padding: 0 40px;
 }
 
@@ -672,6 +673,53 @@ button.next {
 .quote-from textarea:focus {
   background-color: #f0d8d9;
   color: #2d2f39;
+}
+
+/* modal */
+.modal-container {
+  max-width: 100vw;
+  max-height: 100vh;
+  background-color: #f2f2f2cc;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99999;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.modal-message {
+  max-width: 1020px;
+  border: 4px solid #ffffff;
+  padding: 10px 20px;
+  background: #f2f2f2;
+  color: #666d89;
+}
+
+.modal-message h3 {
+  font-size: 30px;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.modal-message p {
+  margin-bottom: 10px;
+}
+
+.modal-message .btn-ok {
+  color: #666d89;
+  border: 1px solid #666d89;
+  margin: 0 auto;
+  display: block;
+  margin-top: 30px;
+  width: 25%;
+  padding: 5px;
 }
 
 .quote-info {

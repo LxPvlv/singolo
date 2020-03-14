@@ -102,3 +102,38 @@ portfolioList.addEventListener("click", evt => {
   );
   target.classList.add("portfolio-active-item");
 });
+
+//quote
+const quote = document.querySelector("#quote");
+const form = quote.querySelector("form");
+const modal = quote.querySelector(".modal-container");
+const btnOK = modal.querySelector(".btn-ok");
+
+form.addEventListener("submit", evt => {
+  evt.preventDefault();
+
+  const { subject, description } = form.elements;
+
+  const body = document.body;
+  body.style.height = "100vh";
+  body.style.overflow = "hidden";
+  modal.style.display = "flex";
+
+  const theme = modal.querySelector(".theme");
+  const desc = modal.querySelector(".desc");
+  theme.innerHTML = subject.value
+    ? `<b>Тема:</b> ${subject.value}`
+    : "Без темы";
+  desc.innerHTML = description.value
+    ? `<b>Описание:</b> ${description.value}`
+    : "Без описания";
+
+  form.reset();
+});
+
+btnOK.addEventListener("click", evt => {
+  const body = document.body;
+  body.style.height = "auto";
+  body.style.overflow = "auto";
+  modal.style.display = "none";
+});
