@@ -29,11 +29,9 @@ let isAnimated = false;
 
 slider.addEventListener("click", evt => {
   const target = evt.target;
-  if (target.tagName !== "BUTTON") return;
-
-  if (isAnimated) return;
-
   const { direction } = target.dataset;
+  if (!direction) return;
+  if (isAnimated) return;
 
   switch (direction) {
     case "next":
@@ -69,4 +67,13 @@ slider.addEventListener("click", evt => {
     },
     { once: true }
   );
+});
+
+//btn-power
+const phones = slidesContainer.querySelectorAll(".btn-power");
+phones.forEach(phone => {
+  phone.addEventListener("click", evt => {
+    const screen = evt.target.parentElement.querySelector("[class*=screen]");
+    screen.classList.toggle("screen-opacity");
+  });
 });
