@@ -90,6 +90,10 @@ ul {
   letter-spacing: -0.1px;
 }
 
+button::-moz-focus-inner {
+  border: 0;
+}
+
 /* HEADER */
 
 .header {
@@ -169,12 +173,12 @@ ul {
 .slider {
   display: flex;
   align-items: center;
-  padding-bottom: 6px;
-  height: 600px;
+  padding-bottom: 58px;
+  padding-top: 53px;
   background-color: #f06c64;
   border-bottom: 6px solid #ea676b;
   justify-content: space-between;
-  transition: all 0.4s;
+  transition: all 0.3s;
 }
 
 .slider .slider-header {
@@ -190,7 +194,7 @@ button.next {
   padding: 0;
   background-color: transparent;
   outline: none;
-  flex-basis: 71px;
+  flex-basis: 84px;
 }
 
 button.prev:hover,
@@ -233,19 +237,46 @@ button.next {
   background-position: right center;
 }
 
-.slides-viewport {
-  flex-grow: 1;
-  overflow: hidden;
-}
-
 .slides-container {
-  display: flex;
   position: relative;
+  overflow: hidden;
+  width: 100%;
 }
 
-.phones-slide1,
-.phones-slide2 {
-  flex: 0 0 100%;
+.slide {
+  display: none;
+  width: 100%;
+}
+
+.active-slide,
+.next-slide {
+  display: block;
+}
+
+.next-slide {
+  position: absolute;
+  top: 0;
+}
+
+.move-prev {
+  animation-name: move-prev;
+  animation-duration: 0.3s;
+}
+
+.move-next {
+  animation-name: move-next;
+  animation-duration: 0.3s;
+}
+
+@keyframes move-prev {
+  100% {
+    transform: translateX(100%);
+  }
+}
+@keyframes move-next {
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 .phones-slide1 {
@@ -253,9 +284,9 @@ button.next {
   grid-template-columns: 1fr 2fr;
 }
 
-.phones-slide2 {
-  background-image: url("./assets/images/slide-2.png");
-  background-size: cover;
+.slide img {
+  width: 100%;
+  display: block;
 }
 
 .phone-v,
@@ -311,7 +342,7 @@ button.next {
   background-image: url("./assets/images/phonescreen-h.jpeg");
   width: 339px;
   height: 194px;
-  top: 11px;
+  top: 10px;
   left: 105px;
 }
 
@@ -321,7 +352,7 @@ button.next {
 
 .phone-h .phone-base {
   transform: rotate(90deg);
-  transform-origin: 253.5px 252.5px;
+  transform-origin: 254px 252px;
 }
 
 .slides-container .btn-power,
@@ -528,11 +559,7 @@ button.next {
 }
 
 .about .section-header {
-  /* font-size: 30px;
-  line-height: 20px; */
   color: #666d89;
-  /* font-weight: 900;
-  letter-spacing: -0.1px; */
 }
 
 .about-description {
