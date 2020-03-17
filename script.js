@@ -30,11 +30,10 @@ document.querySelector("#header-navigation").addEventListener("click", evt => {
   class SlidesList {
     constructor(slider) {
       this.slider = slider;
-      const slidesContainer = slider.querySelector(".slides-container");
-      const slides = slidesContainer.children;
+      const slides = slider.querySelector(".slides-container").children;
 
-      const list = [...slides].reduce((list, node) => list.add(node), this);
-      this.head = list.head.next;
+      [...slides].reduce((list, node) => list.add(node), this);
+      this.head = this.head.next;
 
       this.dict = {
         next: "right",
