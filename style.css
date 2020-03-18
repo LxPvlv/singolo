@@ -844,6 +844,10 @@ button.next {
   text-decoration: none;
 }
 
+.props .prop-item .props-item-link:hover {
+  text-decoration: underline;
+}
+
 .prop-item.location::before,
 .prop-item.phone::before,
 .prop-item.mail::before {
