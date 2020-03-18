@@ -1,15 +1,4 @@
 //navigation
-document.querySelector("#header-navigation").addEventListener("click", evt => {
-  const target = evt.target;
-  if (target.tagName !== "A") return;
-
-  [...evt.currentTarget.children].forEach(node =>
-    node.classList.remove("active")
-  );
-
-  target.parentElement.classList.add("active");
-});
-
 (function(selector) {
   const onScroll = (() => {
     let isEnabled = true;
@@ -23,10 +12,14 @@ document.querySelector("#header-navigation").addEventListener("click", evt => {
         .querySelector("header")
         .getBoundingClientRect().height;
 
-      const activeId = [...sections].findIndex(section => {
+      let activeId = [...sections].findIndex(section => {
         const { top, bottom } = section.getBoundingClientRect();
         return top <= headerHeight && bottom > headerHeight;
       });
+
+      if (innerHeight + pageYOffset >= document.body.scrollHeight) {
+        activeId = sections.length - 1;
+      }
 
       links.forEach(node => node.parentElement.classList.remove("active"));
 
@@ -46,8 +39,19 @@ document.querySelector("#header-navigation").addEventListener("click", evt => {
       }
     };
   })();
-
   document.addEventListener("scroll", onScroll);
+
+  let lastPosition;
+  document.querySelector(selector).addEventListener("click", evt => {
+    const target = evt.target;
+    if (target.tagName !== "A") return;
+
+    [...evt.currentTarget.children].forEach(node =>
+      node.classList.remove("active")
+    );
+
+    target.parentElement.classList.add("active");
+  });
 })("#header-navigation");
 
 //slider
