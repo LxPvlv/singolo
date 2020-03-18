@@ -46,6 +46,7 @@
 html {
   font-family: "Lato", sans-serif;
   scroll-padding-top: 95px;
+  scroll-behavior: smooth;
 }
 
 body,
@@ -533,7 +534,7 @@ button.next {
 .portfolio-item {
   flex-basis: 220px;
   margin-bottom: 20px;
-  transition: transform 300ms;
+  transition: transform 0.3s;
 }
 
 .portfolio-active-item {

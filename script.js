@@ -1,21 +1,54 @@
+//navigation
 document.querySelector("#header-navigation").addEventListener("click", evt => {
   const target = evt.target;
   if (target.tagName !== "A") return;
-
-  evt.preventDefault();
 
   [...evt.currentTarget.children].forEach(node =>
     node.classList.remove("active")
   );
 
   target.parentElement.classList.add("active");
-
-  const destination = document.querySelector(target.getAttribute("href"));
-  destination &&
-    destination.scrollIntoView({
-      behavior: "smooth"
-    });
 });
+
+(function(selector) {
+  const onScroll = (() => {
+    let isEnabled = true;
+    let finalize = false;
+
+    const seekActive = () => {
+      const links = document.querySelectorAll(`${selector} a`);
+      const ids = [...links].map(a => a.getAttribute("href"));
+      const sections = document.querySelectorAll(ids.join());
+      const headerHeight = document
+        .querySelector("header")
+        .getBoundingClientRect().height;
+
+      const activeId = [...sections].findIndex(section => {
+        const { top, bottom } = section.getBoundingClientRect();
+        return top <= headerHeight && bottom > headerHeight;
+      });
+
+      links.forEach(node => node.parentElement.classList.remove("active"));
+
+      links[activeId].parentElement.classList.add("active");
+    };
+
+    return () => {
+      if (isEnabled) {
+        seekActive();
+        isEnabled = false;
+        setTimeout(() => {
+          isEnabled = true;
+          if (finalize) seekActive();
+        }, 300);
+      } else {
+        finalize = true;
+      }
+    };
+  })();
+
+  document.addEventListener("scroll", onScroll);
+})("#header-navigation");
 
 //slider
 (function(selector) {
