@@ -519,7 +519,14 @@ button.next {
   color: #c5c5c5;
 }
 
+.portfolio-filter.animated button:hover {
+  cursor: auto;
+  border: 1px solid #767e9e;
+  color: #767e9e;
+}
+.portfolio-filter.animated button.active,
 .portfolio-filter button.active {
+  cursor: auto;
   border: 1px solid #c5c5c5;
   color: #c5c5c5;
 }
@@ -534,7 +541,42 @@ button.next {
 .portfolio-item {
   flex-basis: 220px;
   margin-bottom: 20px;
-  transition: transform 0.3s;
+  overflow: hidden;
+  position: relative;
+}
+
+.portfolio-item > img {
+  display: block;
+}
+
+.rotate-from {
+  animation: rotate-from 0.5s;
+  transform-origin: left bottom;
+}
+
+.rotate-to {
+  animation: rotate-to 0.5s;
+  transform-origin: top right;
+  position: absolute;
+  top: 0;
+}
+
+@keyframes rotate-from {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes rotate-to {
+  0% {
+    transform: rotate(90deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
 }
 
 .portfolio-active-item {

@@ -147,25 +147,51 @@ document.querySelector("#header-navigation").addEventListener("click", evt => {
   const portfolio = document.querySelector("#portfolio");
   const filterBtns = portfolio.querySelector(".portfolio-filter");
   const portfolioList = portfolio.querySelector(".portfolio-list");
+  let isAnimated = false;
 
   filterBtns.addEventListener("click", evt => {
+    if (isAnimated) return;
     const target = evt.target;
     if (target.tagName !== "BUTTON") return;
+    if (target.classList.contains("active")) return;
 
     [...filterBtns.children].forEach(btn => btn.classList.remove("active"));
     target.classList.add("active");
 
-    portfolioList.prepend(portfolioList.lastElementChild);
+    const newItems = [...portfolioList.children].map(item =>
+      item.firstChild.cloneNode()
+    );
+    newItems.unshift(newItems.pop());
+
+    let count = newItems.length;
+    isAnimated = true;
+    filterBtns.classList.add("animated");
+    [...portfolioList.children].forEach((item, i) => {
+      item.classList.remove("portfolio-active-item");
+      const oldImg = item.firstChild;
+      const newImg = newItems[i];
+      oldImg.classList.add("rotate-from");
+      newImg.classList.add("rotate-to");
+      item.append(newImg);
+      newImg.addEventListener("animationend", evt => {
+        newImg.classList.remove("rotate-to");
+        oldImg.remove();
+        if (!--count) {
+          isAnimated = false;
+          filterBtns.classList.remove("animated");
+        }
+      });
+    });
   });
 
   portfolioList.addEventListener("click", evt => {
     const target = evt.target;
     if (target.tagName !== "IMG") return;
 
-    [...portfolioList.children].forEach(img =>
-      img.classList.remove("portfolio-active-item")
+    [...portfolioList.children].forEach(item =>
+      item.classList.remove("portfolio-active-item")
     );
-    target.classList.add("portfolio-active-item");
+    target.parentElement.classList.add("portfolio-active-item");
   });
 })("#portfolio");
 
