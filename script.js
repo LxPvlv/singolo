@@ -72,11 +72,6 @@
       [...slides].reduce((list, node) => list.add(node), this);
       this.head = this.head.next;
 
-      this.dict = {
-        next: "right",
-        prev: "left"
-      };
-
       this.isAnimated = false;
     }
 
@@ -103,7 +98,7 @@
       if (this.isAnimated) return;
 
       if (!direction) return;
-      const offset = this.dict[direction];
+      const leftRight = { prev: "left", next: "right" }[direction];
 
       this.isAnimated = true;
 
@@ -111,7 +106,7 @@
       let to = this.head[direction].slide;
       from.classList.add("active-slide", `move-${direction}`);
       to.classList.add("next-slide", `move-${direction}`);
-      to.style[offset] = "-100%";
+      to.style[leftRight] = "-100%";
       this.slider.style.backgroundColor = to.dataset.bgcolor;
       this.slider.style.borderBottomColor = to.dataset.bbcolor;
       to.addEventListener(
@@ -121,7 +116,7 @@
           from.classList.remove("active-slide", `move-${direction}`);
           to.classList.remove("next-slide", `move-${direction}`);
           to.classList.add("active-slide");
-          to.style[offset] = "";
+          to.style[leftRight] = "";
           this.head = this.head[direction];
         },
         { once: true }
