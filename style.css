@@ -189,6 +189,9 @@ button::-moz-focus-inner {
 
 button.prev,
 button.next {
+  background-image: url("./assets/images/arrow-slider.svg");
+  background-position: left center;
+  background-position-x: 15%;
   background-repeat: no-repeat;
   align-self: stretch;
   border: 0;
@@ -198,44 +201,23 @@ button.next {
   flex-basis: 84px;
 }
 
+button.next {
+  transform: rotate(180deg);
+}
+
 button.prev:hover,
 button.next:hover {
   cursor: pointer;
+  animation: animate-arrow-slider 1.2s linear infinite;
 }
 
-button.prev:hover {
-  animation: animate-prev 1s linear infinite;
-}
-
-button.next:hover {
-  animation: animate-next 1s linear infinite;
-}
-@keyframes animate-next {
+@keyframes animate-arrow-slider {
   from {
-    background-position-x: 50%;
-  }
-  to {
-    background-position-x: 100%;
-  }
-}
-
-@keyframes animate-prev {
-  from {
-    background-position-x: 50%;
+    background-position-x: 15%;
   }
   to {
     background-position-x: 0%;
   }
-}
-
-button.prev {
-  background-image: url("./assets/images/slider-left-arrow.svg");
-  background-position: left center;
-}
-
-button.next {
-  background-image: url("./assets/images/slider-right-arrow.svg");
-  background-position: right center;
 }
 
 .slides-container {
