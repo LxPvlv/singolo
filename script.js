@@ -33,7 +33,7 @@
         setTimeout(() => {
           isEnabled = true;
           if (finalize) seekActive();
-        }, 300);
+        }, 100);
       } else {
         finalize = true;
       }
@@ -41,7 +41,6 @@
   })();
   document.addEventListener("scroll", onScroll);
 
-  let lastPosition;
   document.querySelector(selector).addEventListener("click", evt => {
     const target = evt.target;
     if (target.tagName !== "A") return;
@@ -51,6 +50,19 @@
     );
 
     target.parentElement.classList.add("active");
+
+    document.removeEventListener("scroll", onScroll);
+
+    let { scrollTop: lastScroll } = document.documentElement;
+    const interval = setInterval(() => {
+      let { scrollTop: currentScroll } = document.documentElement;
+      if (lastScroll === currentScroll) {
+        document.addEventListener("scroll", onScroll);
+        onScroll();
+        clearInterval(interval);
+      }
+      lastScroll = currentScroll;
+    }, 100);
   });
 })("#header-navigation");
 
