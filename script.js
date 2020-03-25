@@ -145,10 +145,15 @@
   });
 
   //btn-power
-  slider.querySelectorAll(".btn-power").forEach(phone => {
-    phone.addEventListener("click", evt => {
-      const screen = evt.target.parentElement.querySelector("[class*=screen]");
-      screen.classList.toggle("screen-opacity");
+  window.addEventListener("load", () => {
+    var phonesObject = document.querySelectorAll(".slider-phone");
+    phonesObject.forEach(phone => {
+      const svgDocument = phone.contentDocument;
+      var btnPower = svgDocument.querySelector("#btn-power");
+      btnPower.addEventListener("click", evt => {
+        const screen = svgDocument.querySelector("#phone-screen");
+        screen.classList.toggle("onOff");
+      });
     });
   });
 })("#slider");
