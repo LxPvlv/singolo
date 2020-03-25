@@ -548,16 +548,19 @@ button.next:hover {
 
 .photos {
   display: grid;
-  grid-gap: 20px;
-  grid-template-columns: repeat(3, minmax(300px, 1fr));
+  grid-gap: 2%;
+  grid-template-columns: repeat(3, minmax(30px, 1fr));
   justify-content: space-between;
   margin-top: 45px;
 }
 
 .photo {
-  flex-basis: 300px;
   display: flex;
   flex-direction: column;
+}
+
+.photo img {
+  width: 100%;
 }
 
 .photos .photo-title {
@@ -595,6 +598,27 @@ button.next:hover {
 .social-buttons .social-buttons-link:hover {
   border-radius: 50%;
   box-shadow: inset 0 0 2px 1px #9a9fb0, 0 0 3px 1px #9a9fb0;
+}
+
+@media screen and (max-width: 1019px) {
+  .about {
+    padding-top: 52px;
+    padding-bottom: 69px;
+  }
+  .photos {
+    margin-top: 37px;
+    gap: 15px;
+  }
+  .photos .photo-title {
+    margin-top: 12px;
+  }
+  .photos .photo-description {
+    margin-top: 2px;
+    line-height: 22px;
+  }
+  .social-buttons {
+    margin-top: 11px;
+  }
 }
 
 /* QUOTE */
