@@ -298,8 +298,29 @@ button.next:hover {
 .services-list .item {
   padding-left: 80px;
   position: relative;
-
   overflow: hidden;
+}
+
+@media screen and (max-width: 1019px) {
+  .services {
+    padding-top: 36px;
+    padding-bottom: 70px;
+  }
+
+  .services .services-description {
+    margin-top: 17px;
+    margin-bottom: 12px;
+  }
+
+  .services-list {
+    grid-template-columns: repeat(2, minmax(100px, 1fr));
+    column-gap: 18px;
+    row-gap: 29px;
+  }
+
+  .services-list .item {
+    padding-right: 33px;
+  }
 }
 
 .services-list .item::before {
