@@ -87,7 +87,7 @@ ul {
 .section-header {
   font-size: 30px;
   font-weight: 900;
-  line-height: 23px;
+  line-height: 36px;
   letter-spacing: -0.1px;
 }
 
@@ -273,7 +273,7 @@ button.next:hover {
   color: #666d89;
   background-color: #f2f2f2;
   border-bottom: 6px solid #ffffff;
-  padding-top: 66px;
+  padding-top: 59px;
   padding-bottom: 62px;
 }
 
@@ -283,7 +283,7 @@ button.next:hover {
   font-weight: 300;
   line-height: 30px;
   text-align: justify;
-  margin-top: 24px;
+  margin-top: 18px;
   margin-bottom: 20px;
 }
 
@@ -366,7 +366,7 @@ button.next:hover {
 
 .portfolio {
   background-color: #2d303a;
-  padding-top: 66px;
+  padding-top: 59px;
   border-bottom: 6px solid #323746;
   padding-bottom: 47px;
 }
@@ -380,7 +380,7 @@ button.next:hover {
   line-height: 30px;
   font-weight: 300;
   color: #767e9e;
-  margin-top: 24px;
+  margin-top: 18px;
 }
 
 .portfolio-filter {
@@ -486,7 +486,7 @@ button.next:hover {
 
 .about {
   background-color: #f2f2f2;
-  padding-top: 67px;
+  padding-top: 59px;
   border-bottom: 6px solid #ffffff;
   padding-bottom: 67px;
 }
@@ -496,7 +496,7 @@ button.next:hover {
 }
 
 .about-description {
-  margin-top: 23px;
+  margin-top: 18px;
   font-size: 18px;
   line-height: 30px;
   color: #767e9e;
@@ -559,7 +559,7 @@ button.next:hover {
 
 .quote {
   background-color: #ef6b63;
-  padding-top: 66px;
+  padding-top: 59px;
   border-bottom: 6px solid #e9676b;
   padding-bottom: 0px;
 }
@@ -569,7 +569,7 @@ button.next:hover {
 }
 
 .quote-description {
-  margin-top: 24px;
+  margin-top: 18px;
   font-size: 18px;
   color: #f0d8d9;
   font-weight: 300;
