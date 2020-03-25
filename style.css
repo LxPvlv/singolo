@@ -450,14 +450,35 @@ button.next:hover {
 }
 
 .portfolio-item {
-  flex-basis: 220px;
   margin-bottom: 20px;
+  margin-right: 20px;
   overflow: hidden;
   position: relative;
+  flex: 1 1 22%;
+}
+
+@media screen and (min-width: 1020px) {
+  .portfolio-item:nth-child(4n) {
+    margin-right: 0;
+  }
 }
 
 .portfolio-item > img {
   display: block;
+  width: 100%;
+}
+
+@media screen and (max-width: 1019px) {
+  .portfolio-list {
+    padding-top: 28px;
+  }
+  .portfolio-item {
+    margin-right: 20px;
+    flex-basis: 28%;
+  }
+  .portfolio-item:nth-child(3n) {
+    margin-right: 0;
+  }
 }
 
 .rotate-from {
