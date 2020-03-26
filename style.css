@@ -529,6 +529,33 @@ button.next:hover {
   text-align: justify;
 }
 
+@media screen and (max-width: 767px) {
+  .services {
+    padding-top: 26px;
+    border-bottom: none;
+    padding-bottom: 30px;
+  }
+
+  .services-list {
+    grid-template-columns: minmax(100px, 1fr);
+    row-gap: 3px;
+  }
+  .services-list .item {
+    padding-right: 12px;
+    padding-left: 82px;
+  }
+  .services-list .service-list-header {
+    margin-top: 20px;
+  }
+  .services-list .item::before {
+    left: 2px;
+    top: 29px;
+  }
+  .services .services-description {
+    margin-bottom: 2px;
+  }
+}
+
 /* PORTFOLIO */
 
 .portfolio {
