@@ -66,6 +66,13 @@
   });
 })("#header-navigation");
 
+// burger menu
+document.querySelector(".burger-btn").addEventListener("click", evt => {
+  const currentTarget = evt.currentTarget;
+  currentTarget.classList.toggle("active");
+  currentTarget.parentElement.querySelector(".menu").classList.toggle("open");
+});
+
 //slider
 (function(selector) {
   class Slide {
