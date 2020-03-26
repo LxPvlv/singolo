@@ -181,15 +181,16 @@ document.querySelector(".burger-btn").addEventListener("click", evt => {
     [...filterBtns.children].forEach(btn => btn.classList.remove("active"));
     target.classList.add("active");
 
-    const newItems = [...portfolioList.children].map(item =>
-      item.firstChild.cloneNode()
+    const visibleItems = [...portfolioList.children].filter(
+      item => item.offsetParent !== null
     );
+    const newItems = visibleItems.map(item => item.firstChild.cloneNode());
     newItems.unshift(newItems.pop());
 
     let count = newItems.length;
     isAnimated = true;
     filterBtns.classList.add("animated");
-    [...portfolioList.children].forEach((item, i) => {
+    visibleItems.forEach((item, i) => {
       item.classList.remove("portfolio-active-item");
       const oldImg = item.firstChild;
       const newImg = newItems[i];

@@ -600,7 +600,6 @@ button.next:hover {
 .portfolio-filter button:hover {
   cursor: pointer;
   border-color: #c5c5c5;
-  color: #c5c5c5;
 }
 
 .portfolio-filter.animated button:hover {
@@ -641,7 +640,7 @@ button.next:hover {
   width: 100%;
 }
 
-@media screen and (max-width: 1019px) {
+@media screen and (min-width: 768px) and (max-width: 1019px) {
   .portfolio-list {
     padding-top: 28px;
   }
@@ -695,6 +694,31 @@ button.next:hover {
 
 .portfolio-item:nth-child(n + 13) {
   display: none;
+}
+
+@media screen and (max-width: 767px) {
+  .portfolio {
+    padding-top: 42px;
+    padding-bottom: 29px;
+    border-bottom: none;
+  }
+  .portfolio-filter {
+    margin-top: 16px;
+  }
+  .portfolio-list {
+    padding-top: 25px;
+  }
+  .portfolio-item {
+    margin-right: 13px;
+    margin-bottom: 13px;
+    flex-basis: 46%;
+  }
+  .portfolio-item:nth-child(2n) {
+    margin-right: 0;
+  }
+  .portfolio-item:nth-child(n + 9) {
+    display: none;
+  }
 }
 
 /* ABOUT US */
