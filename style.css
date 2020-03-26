@@ -406,6 +406,13 @@ button.next:hover {
   width: 100%;
 }
 
+@media screen and (max-width: 767px) {
+  .slider {
+    padding-bottom: 6.2%;
+    border-bottom: none;
+  }
+}
+
 /* SERVICES */
 
 .services {
