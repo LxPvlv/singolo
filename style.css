@@ -779,11 +779,12 @@ button.next:hover {
   color: #767e9e;
   font-weight: 400;
   text-align: justify;
+  margin-bottom: 24px;
 }
 
 .social-buttons {
   display: flex;
-  margin-top: 24px;
+  margin-top: auto;
 }
 
 .social-buttons .social-buttons-link {
@@ -812,9 +813,7 @@ button.next:hover {
   .photos .photo-description {
     margin-top: 2px;
     line-height: 22px;
-  }
-  .social-buttons {
-    margin-top: 11px;
+    margin-bottom: 11px;
   }
 }
 
