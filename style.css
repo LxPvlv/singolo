@@ -818,6 +818,22 @@ button.next:hover {
   }
 }
 
+@media screen and (max-width: 767px) {
+  .about {
+    padding-top: 33px;
+    padding-bottom: 45px;
+    border-bottom: none;
+  }
+  .photos {
+    grid-template-columns: 1fr;
+    gap: 34px;
+    margin-top: 24px;
+  }
+  .photos .photo-title {
+    margin-top: 18px;
+  }
+}
+
 /* QUOTE */
 
 .quote {
