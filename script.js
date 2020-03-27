@@ -51,6 +51,9 @@
 
     target.parentElement.classList.add("active");
 
+    document.querySelector(".menu").classList.remove("open");
+    document.querySelector(".burger-btn").classList.remove("active");
+
     document.removeEventListener("scroll", onScroll);
 
     let { scrollTop: lastScroll } = document.documentElement;
@@ -71,6 +74,12 @@ document.querySelector(".burger-btn").addEventListener("click", evt => {
   const currentTarget = evt.currentTarget;
   currentTarget.classList.toggle("active");
   currentTarget.parentElement.querySelector(".menu").classList.toggle("open");
+});
+
+// backdrop click
+document.querySelector("#backdrop").addEventListener("click", evt => {
+  document.querySelector(".menu").classList.remove("open");
+  document.querySelector(".burger-btn").classList.remove("active");
 });
 
 //slider
