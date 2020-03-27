@@ -882,6 +882,8 @@ button.next:hover {
 }
 
 .quote-from input[type="submit"] {
+  font-family: Lato, sans-serif;
+  text-transform: uppercase;
   display: block;
   margin-bottom: 13px;
   margin-left: auto;
@@ -1074,6 +1076,42 @@ button.next:hover {
   }
   .quote-info {
     flex: 1 33%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .quote {
+    padding-top: 11.9%;
+    padding-bottom: 9.4%;
+    border-bottom: none;
+  }
+
+  .quote-from {
+    margin-top: 7.3%;
+    display: block;
+  }
+  .quote-from form {
+    margin-right: 0;
+  }
+  .quote-from input,
+  .quote-from textarea {
+    margin-bottom: 3.8%;
+  }
+  .quote-from input[type="submit"] {
+    width: 100%;
+    font-size: 14px;
+    line-height: 17px;
+    font-weight: bold;
+    padding: 17px;
+  }
+  .quote-info {
+    margin-top: 29px;
+  }
+  .props {
+    margin-top: 9px;
+  }
+  .props .prop-item {
+    margin-bottom: 4px;
   }
 }
 
