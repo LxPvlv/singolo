@@ -652,6 +652,7 @@ button.next:hover {
 .portfolio-item > img {
   display: block;
   width: 100%;
+  transition: transform 1s;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1019px) {
@@ -667,37 +668,29 @@ button.next:hover {
   }
 }
 
-.rotate-from {
-  animation: rotate-from 0.5s;
-  transform-origin: left bottom;
+.animate-from {
+  transform-origin: center;
+  padding-top: 85%;
+  background-color: #3b3f4f;
 }
 
-.rotate-to {
-  animation: rotate-to 0.5s;
-  transform-origin: top right;
+.animate-to {
+  animation: animate-to 0.5s;
+  transform-origin: center;
   position: absolute;
   top: 0;
 }
 
-@keyframes rotate-from {
+@keyframes animate-to {
   0% {
-    transform: rotate(0);
+    transform: scale(9) rotate(1560deg);
   }
   100% {
-    transform: rotate(90deg);
+    transform: scale(1) rotate(0deg);
   }
 }
 
-@keyframes rotate-to {
-  0% {
-    transform: rotate(90deg);
-  }
-  100% {
-    transform: rotate(0);
-  }
-}
-
-.portfolio-active-item {
+.portfolio-selected-item {
   outline: 5px solid #f06c64;
 }
 

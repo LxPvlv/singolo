@@ -184,22 +184,23 @@ document.querySelector(".burger-btn").addEventListener("click", evt => {
     const visibleItems = [...portfolioList.children].filter(
       item => item.offsetParent !== null
     );
-    const newItems = visibleItems.map(item => item.firstChild.cloneNode());
+    const newItems = visibleItems.map(item => item.firstChild);
     newItems.unshift(newItems.pop());
 
     let count = newItems.length;
     isAnimated = true;
     filterBtns.classList.add("animated");
     visibleItems.forEach((item, i) => {
-      item.classList.remove("portfolio-active-item");
-      const oldImg = item.firstChild;
+      item.classList.remove("portfolio-selected-item");
+      const empty = document.createElement("div");
+      item.append(empty);
       const newImg = newItems[i];
-      oldImg.classList.add("rotate-from");
-      newImg.classList.add("rotate-to");
       item.append(newImg);
+      empty.classList.add("animate-from");
+      newImg.classList.add("animate-to");
       newImg.addEventListener("animationend", evt => {
-        newImg.classList.remove("rotate-to");
-        oldImg.remove();
+        newImg.classList.remove("animate-to");
+        empty.remove();
         if (!--count) {
           isAnimated = false;
           filterBtns.classList.remove("animated");
@@ -213,9 +214,9 @@ document.querySelector(".burger-btn").addEventListener("click", evt => {
     if (target.tagName !== "IMG") return;
 
     [...portfolioList.children].forEach(item =>
-      item.classList.remove("portfolio-active-item")
+      item.classList.remove("portfolio-selected-item")
     );
-    target.parentElement.classList.add("portfolio-active-item");
+    target.parentElement.classList.add("portfolio-selected-item");
   });
 })("#portfolio");
 
