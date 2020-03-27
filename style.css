@@ -221,6 +221,19 @@ button::-moz-focus-inner {
   left: 0;
 }
 
+.backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #00000055;
+}
+.burger-btn.active + .backdrop {
+  display: block;
+}
+
 @media screen and (max-width: 767px) {
   html {
     scroll-padding-top: 70px;
@@ -258,6 +271,7 @@ button::-moz-focus-inner {
     width: 282px;
     height: 100vh;
     right: 100%;
+    overflow: hidden;
   }
   .menu.open .navigation {
     margin-top: 184px;
