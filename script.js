@@ -31,11 +31,6 @@ const $$ = s => document.querySelectorAll(s);
     links[activeId].parentElement.classList.add("active");
   };
 
-  const closeBurgerMenu = () => {
-    menu.classList.remove("open");
-    burgerBtn.classList.remove("active");
-  };
-
   let throttle = false;
   let needFinalization = false;
   const onScroll = () => {
@@ -63,7 +58,7 @@ const $$ = s => document.querySelectorAll(s);
 
     target.parentElement.classList.add("active");
 
-    closeBurgerMenu();
+    if (burgerBtn.classList.contains("open")) burgerBtn.click();
 
     document.removeEventListener("scroll", onScroll);
 
@@ -81,34 +76,31 @@ const $$ = s => document.querySelectorAll(s);
   });
 
   // burger menu click
-  let clickEnabled = true;
   burgerBtn.addEventListener("click", evt => {
-    if (!clickEnabled) return;
-    const target = evt.target;
-    if (menu.classList.contains("open")) {
-      clickEnabled = false;
-      target.classList.remove("active");
-      menu.style.transform = "translateX(0)";
-      burgerBtn.style.transform = "rotate(0deg)";
-      menu.addEventListener(
-        "transitionend",
-        evt => {
-          closeBurgerMenu();
-          menu.style.transform = "";
-          burgerBtn.style.transform = "";
-          clickEnabled = true;
-        },
-        { once: true }
-      );
-    } else {
-      target.classList.add("active");
-      menu.classList.add("open");
+    menu.classList.toggle("translate");
+    burgerBtn.classList.toggle("open");
+  });
+
+  //mobile menu
+  menu.addEventListener("transitionend", evt => {
+    const isTranslate = menu.classList.contains("translate");
+    const isOpen = menu.classList.contains("open");
+    const isClosed = menu.classList.contains("closed");
+
+    if (isTranslate) return;
+    if (isOpen) {
+      menu.classList.add("translate", "closed");
+      menu.classList.remove("open");
+    }
+    if (isClosed) {
+      menu.classList.add("translate", "open");
+      menu.classList.remove("closed");
     }
   });
 
   // backdrop click
   $("#backdrop").addEventListener("click", evt => {
-    closeBurgerMenu();
+    burgerBtn.click();
   });
 })("#header-navigation");
 

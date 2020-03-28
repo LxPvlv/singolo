@@ -224,13 +224,13 @@ button::-moz-focus-inner {
 .backdrop {
   display: none;
   position: fixed;
-  top: 0;
+  top: 71px;
   bottom: 0;
   left: 0;
   right: 0;
   background-color: #00000055;
 }
-.burger-btn.active + .backdrop {
+.burger-btn.open ~ .backdrop {
   display: block;
 }
 
@@ -240,52 +240,58 @@ button::-moz-focus-inner {
   }
 
   .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 0 20px;
     padding-left: 6.5%;
     height: 71px;
-    justify-content: center;
-    align-items: center;
     border-bottom: none;
   }
 
   .header .menu {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
     position: absolute;
     top: 0;
-    width: 90%;
+    right: 100%;
     background-color: #2d303a;
+    transition: transform 0.2s;
+  }
+  .header .menu.translate {
+    transform: translateX(100%);
+  }
+
+  .header .menu.closed {
+    justify-content: flex-end;
+    align-items: center;
+    box-shadow: none;
+    height: 100%;
+    width: calc(51% + 3em);
+    padding-left: 0;
   }
 
   .header .menu.open {
-    transition: transform 0.2s;
-    transform: translateX(100%);
-    box-shadow: 0px -40px 20px rgba(0, 0, 0, 0.4);
-
-    padding-left: 75px;
     flex-direction: column;
     align-items: flex-start;
+    padding-left: 75px;
     padding-top: 25px;
     width: 282px;
     height: 100vh;
-    right: 100%;
     overflow: hidden;
-  }
-  .menu.open .navigation {
-    margin-top: 184px;
-    display: flex;
+    box-shadow: 0px -40px 20px rgba(0, 0, 0, 0.4);
   }
 
+  .menu.closed .navigation {
+    display: none;
+  }
   .burger-btn {
     display: block;
     outline: none;
     cursor: pointer;
     transition: transform 0.2s;
   }
-  .burger-btn.active {
-    transform: rotate(270deg);
+  .burger-btn.open {
+    transform: rotate(450deg);
   }
 
   .logo .logo-title {
@@ -299,9 +305,9 @@ button::-moz-focus-inner {
   }
 
   .header-navigation .navigation {
-    display: none;
+    margin-top: 184px;
+    display: flex;
     flex-direction: column;
-    margin-top: 75px;
   }
 
   .menu .navigation-item {
