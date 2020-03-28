@@ -1,86 +1,95 @@
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+
 //navigation
 (function(selector) {
-  const onScroll = (() => {
-    let isEnabled = true;
-    let finalize = false;
+  const links = $$(`${selector} a`);
+  const anchors = [...links].map(a => a.getAttribute("href"));
+  const sections = $$(anchors.join());
 
-    const seekActive = () => {
-      const links = document.querySelectorAll(`${selector} a`);
-      const ids = [...links].map(a => a.getAttribute("href"));
-      const sections = document.querySelectorAll(ids.join());
-      const headerHeight = document
-        .querySelector("header")
-        .getBoundingClientRect().height;
+  const headerHeight = $("header").getBoundingClientRect().height;
 
-      let activeId = [...sections].findIndex(section => {
-        const { top, bottom } = section.getBoundingClientRect();
-        return top <= headerHeight && bottom > headerHeight;
-      });
+  const isDocumentEnd = () =>
+    innerHeight + pageYOffset >= document.body.scrollHeight;
 
-      if (innerHeight + pageYOffset >= document.body.scrollHeight) {
-        activeId = sections.length - 1;
-      }
+  const findIndexActiveSection = sections => {
+    return isDocumentEnd()
+      ? sections.length - 1
+      : [...sections].findIndex(section => {
+          const { top, bottom } = section.getBoundingClientRect();
+          return top <= headerHeight && bottom > headerHeight;
+        });
+  };
 
-      links.forEach(node => node.parentElement.classList.remove("active"));
+  const highlightActiveLink = () => {
+    let activeId = findIndexActiveSection(sections);
 
-      links[activeId].parentElement.classList.add("active");
-    };
+    $("#header-navigation .active").classList.remove("active");
 
-    return () => {
-      if (isEnabled) {
-        seekActive();
-        isEnabled = false;
-        setTimeout(() => {
-          isEnabled = true;
-          if (finalize) seekActive();
-        }, 100);
-      } else {
-        finalize = true;
-      }
-    };
-  })();
+    links[activeId].parentElement.classList.add("active");
+  };
+
+  const closeBurgerMenu = () => {
+    $(".menu").classList.remove("open");
+    $(".burger-btn").classList.remove("active");
+  };
+
+  let throttle = false;
+  let needFinalization = false;
+  const onScroll = () => {
+    if (throttle) {
+      needFinalization = true;
+      return;
+    }
+
+    highlightActiveLink();
+    throttle = true;
+    setTimeout(() => {
+      throttle = false;
+      if (needFinalization) highlightActiveLink();
+    }, 100);
+  };
+
   document.addEventListener("scroll", onScroll);
 
-  document.querySelector(selector).addEventListener("click", evt => {
+  //navigation click
+  $(selector).addEventListener("click", evt => {
     const target = evt.target;
     if (target.tagName !== "A") return;
 
-    [...evt.currentTarget.children].forEach(node =>
-      node.classList.remove("active")
-    );
+    $("#header-navigation .active").classList.remove("active");
 
     target.parentElement.classList.add("active");
 
-    document.querySelector(".menu").classList.remove("open");
-    document.querySelector(".burger-btn").classList.remove("active");
+    closeBurgerMenu();
 
     document.removeEventListener("scroll", onScroll);
 
+    //wait stop scroll
     let { scrollTop: lastScroll } = document.documentElement;
     const interval = setInterval(() => {
       let { scrollTop: currentScroll } = document.documentElement;
       if (lastScroll === currentScroll) {
-        document.addEventListener("scroll", onScroll);
-        onScroll();
         clearInterval(interval);
+        onScroll();
+        document.addEventListener("scroll", onScroll);
       }
       lastScroll = currentScroll;
     }, 100);
   });
+
+  // burger menu toggle
+  $(".burger-btn").addEventListener("click", evt => {
+    const target = evt.target;
+    target.classList.toggle("active");
+    target.parentElement.querySelector(".menu").classList.toggle("open");
+  });
+
+  // backdrop click
+  $("#backdrop").addEventListener("click", evt => {
+    closeBurgerMenu();
+  });
 })("#header-navigation");
-
-// burger menu
-document.querySelector(".burger-btn").addEventListener("click", evt => {
-  const currentTarget = evt.currentTarget;
-  currentTarget.classList.toggle("active");
-  currentTarget.parentElement.querySelector(".menu").classList.toggle("open");
-});
-
-// backdrop click
-document.querySelector("#backdrop").addEventListener("click", evt => {
-  document.querySelector(".menu").classList.remove("open");
-  document.querySelector(".burger-btn").classList.remove("active");
-});
 
 //slider
 (function(selector) {
@@ -152,7 +161,7 @@ document.querySelector("#backdrop").addEventListener("click", evt => {
     }
   }
 
-  const slider = document.querySelector(selector);
+  const slider = $(selector);
 
   const list = new SlidesList(slider);
 
@@ -162,7 +171,7 @@ document.querySelector("#backdrop").addEventListener("click", evt => {
 
   //btn-power
   window.addEventListener("load", () => {
-    var phonesObject = document.querySelectorAll(".slider-phone");
+    var phonesObject = $$(".slider-phone");
     phonesObject.forEach(phone => {
       const svgDocument = phone.contentDocument;
       var btnPower = svgDocument.querySelector("#btn-power");
@@ -176,7 +185,7 @@ document.querySelector("#backdrop").addEventListener("click", evt => {
 
 //portfolio
 (function(selector) {
-  const portfolio = document.querySelector("#portfolio");
+  const portfolio = $("#portfolio");
   const filterBtns = portfolio.querySelector(".portfolio-filter");
   const portfolioList = portfolio.querySelector(".portfolio-list");
   let isAnimated = false;
@@ -231,7 +240,7 @@ document.querySelector("#backdrop").addEventListener("click", evt => {
 
 //quote
 (function(selector) {
-  const quote = document.querySelector(selector);
+  const quote = $(selector);
   const form = quote.querySelector("form");
   const modal = quote.querySelector(".modal-container");
   const btnOK = modal.querySelector(".btn-ok");
