@@ -6,6 +6,8 @@ const $$ = s => document.querySelectorAll(s);
   const links = $$(`${selector} a`);
   const anchors = [...links].map(a => a.getAttribute("href"));
   const sections = $$(anchors.join());
+  const menu = $(".menu");
+  const burgerBtn = $(".burger-btn");
 
   const headerHeight = $("header").getBoundingClientRect().height;
 
@@ -30,8 +32,8 @@ const $$ = s => document.querySelectorAll(s);
   };
 
   const closeBurgerMenu = () => {
-    $(".menu").classList.remove("open");
-    $(".burger-btn").classList.remove("active");
+    menu.classList.remove("open");
+    burgerBtn.classList.remove("active");
   };
 
   let throttle = false;
@@ -78,11 +80,30 @@ const $$ = s => document.querySelectorAll(s);
     }, 100);
   });
 
-  // burger menu toggle
-  $(".burger-btn").addEventListener("click", evt => {
+  // burger menu click
+  let clickEnabled = true;
+  burgerBtn.addEventListener("click", evt => {
+    if (!clickEnabled) return;
     const target = evt.target;
-    target.classList.toggle("active");
-    target.parentElement.querySelector(".menu").classList.toggle("open");
+    if (menu.classList.contains("open")) {
+      clickEnabled = false;
+      target.classList.remove("active");
+      menu.style.transform = "translateX(0)";
+      burgerBtn.style.transform = "rotate(0deg)";
+      menu.addEventListener(
+        "transitionend",
+        evt => {
+          closeBurgerMenu();
+          menu.style.transform = "";
+          burgerBtn.style.transform = "";
+          clickEnabled = true;
+        },
+        { once: true }
+      );
+    } else {
+      target.classList.add("active");
+      menu.classList.add("open");
+    }
   });
 
   // backdrop click
